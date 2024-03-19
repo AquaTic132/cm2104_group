@@ -65,6 +65,13 @@ app.get('/', function(req, res) {
       users: result
     })
   });
+  db.collection('characters').find().toArray(function(err, result) {
+    if (err) throw err;
+    //the result of the query is sent to the users page as the "users" array
+    res.render('pages/characters', {
+      users: result
+    })
+  });
 
 });
 

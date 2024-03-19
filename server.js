@@ -93,14 +93,14 @@ app.get('/profile', function(req, res) {
 
 });
 //adduser route simply draws our adduser page
-app.get('/adduser', function(req, res) {
+app.get('/createaccount', function(req, res) {
   if(!req.session.loggedin){res.redirect('/login');return;}
-  res.render('pages/adduser')
+  res.render('pages/createaccount')
 });
 //remuser route simply draws our remuser page
-app.get('/remuser', function(req, res) {
+app.get('/remaccount', function(req, res) {
   if(!req.session.loggedin){res.redirect('/login');return;}
-  res.render('pages/remuser')
+  res.render('pages/remaccount')
 });
 //logour route cause the page to Logout.
 //it sets our session.loggedin to false and then redirects the user to the login
@@ -172,7 +172,7 @@ app.post('/delete', function(req, res) {
 //"picture":{"large":"https://randomuser.me/api/portraits/women/42.jpg","medium":"https://randomuser.me/api/portraits/med/women/42.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/42.jpg"},
 //"nat":"GB"}
 
-app.post('/adduser', function(req, res) {
+app.post('/createaccount', function(req, res) {
   //check we are logged in
   if(!req.session.loggedin){res.redirect('/login');return;}
 

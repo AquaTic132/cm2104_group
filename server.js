@@ -166,19 +166,6 @@ app.post('/delete', function(req, res) {
 });
 
 
-//the adduser route deals with adding a new user
-//dataformat for storing new users.
-
-//{"_id":18,
-//"gender":"female",
-//"name":{"title":"miss","first":"allie","last":"austin"},
-//"location":{"street":"9348 high street","city":"canterbury","state":"leicestershire","postcode":"N7N 1WE"},
-//"email":"allie.austin@example.com",
-//"login":{"username":"smalldog110","password":"lickit"},
-//"dob":"1970-07-06 16:32:37","registered":"2011-02-08 07:10:24",
-//"picture":{"large":"https://randomuser.me/api/portraits/women/42.jpg","medium":"https://randomuser.me/api/portraits/med/women/42.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/42.jpg"},
-//"nat":"GB"}
-
 app.post('/createaccount', function(req, res) {
   //check we are logged in
   if(!req.session.loggedin){res.redirect('/login');return;}
@@ -198,6 +185,12 @@ var datatostore = {
 
 //once created we just run the data string against the database and all our new data will be saved/
   db.collection('people').insertOne(datatostore, function(err, result) {
+    if (err) throw err;
+    console.log('saved to database')
+    //when complete redirect to the index
+    res.redirect('/')
+  })
+  db.collection('characters').insertOne(datatostore, function(err, result) {
     if (err) throw err;
     console.log('saved to database')
     //when complete redirect to the index

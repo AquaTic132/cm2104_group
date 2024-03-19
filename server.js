@@ -190,10 +190,4 @@ var datatostore = {
     //when complete redirect to the index
     res.redirect('/')
   })
-  db.collection('characters').insertOne(datatostore, function(err, result) {
-    if (err) throw err;
-    console.log('saved to database')
-    //when complete redirect to the index
-    res.redirect('/')
-  })
 });
